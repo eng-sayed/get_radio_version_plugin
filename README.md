@@ -1,15 +1,56 @@
 # get_radio_version_plugin
 
-A plugin to get radio version from native code
+A plugin to get radio version from native code (Android).
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+ - get the `radioVersion`
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Getting started
 
+To use this package, add `get_radio_version_plugin` as a dependency in your pubspec.yaml file.
+
+## Usage
+
+Example:
+
+Declare variable:
+```dart
+
+    String _radioVersion = 'Unknown';
+
+```
+
+Create Function `initradioVersionState`:
+
+```dart
+
+    Future<void> initRadioVersionState() async {
+        String radioVersion;
+        try {
+
+          radioVersion = await GetRadioVersionPlugin.radioVersion ?? 'Unknown radio version';
+
+        } on PlatformException {
+
+          radioVersion = 'Failed to get radio version.';
+
+        }
+        if (!mounted) return;
+    
+        setState(() {
+          _radioVersion = radioVersion;
+        });
+    }
+```
+
+Call into initState:
+
+```dart
+
+    void initState() {
+      super.initState();
+      initRadioVersionState();
+    }
+
+```
