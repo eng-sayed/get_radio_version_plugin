@@ -1,6 +1,6 @@
 name: get_radio_version_plugin
 description: A plugin to get radio version from native code (Android).
-version: 0.0.1
+version: 1.0.0
 authors: Pov Ropon
 homepage:
 
